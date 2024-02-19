@@ -1,16 +1,32 @@
-# fitness
+# Nombre del Proyecto
+Fitness app
+## Descripción
+Este es mi primer proyecto en Flutter. Es una aplicación simple que muestra una pantalla de recetas, con widgets para diferentes secciones como categorías, recetas populares y más.
 
-A new Flutter project.
+## Requisitos
+Para ejecutar este proyecto, necesitas tener instalado lo siguiente:
+- Android Studio
+- Flutter SDK
+- Dependencias y paquetes necesarios (puedes instalarlos ejecutando `flutter pub get`)
 
-## Getting Started
+## Instalación
+1. Clona este repositorio en tu máquina local usando Git:
+    git clone https://github.com/SmnZin/Fitness-app.git
+2. Abre el proyecto en Android Studio.
+3. Ejecuta el proyecto en un emulador o dispositivo físico.
 
-This project is a starting point for a Flutter application.
+## Funcionalidades Principales
+- **Búsqueda de Recetas**: Permite buscar recetas escribiendo en un campo de búsqueda.
+- **Categorías de Recetas**: Muestra diferentes categorías de recetas para explorar.
+- **Recetas Populares**: Presenta una lista de recetas populares con detalles como nivel, duración y calorías.
+- **Navegación y Menú**: Navegación simple entre diferentes secciones y un menú de opciones.
 
-A few resources to get you started if this is your first Flutter project:
+## Capturas de Pantalla
+![Captura de Pantalla 1](/assets/icons/pantalla1.png)
+![Captura de Pantalla 2](/assets/icons/pantalla2.png)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Autor
+- Nombre: Simon Carrasco
+- Email: scarrascoi@utem.cl
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
