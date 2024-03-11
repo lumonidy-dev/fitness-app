@@ -15,9 +15,7 @@ class RecetasComponente extends StatelessWidget {
       itemBuilder: (context, receta) => Container(
         width: 210,
         decoration: BoxDecoration(
-          color: receta.boxIsSelected
-              ? const Color(0xff9DCEFF).withOpacity(0.3)
-              : Colors.transparent,
+          color: receta.color.withOpacity(0.3),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -48,19 +46,19 @@ class RecetasComponente extends StatelessWidget {
                 height: 45,
                 width: 130,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
-                      receta.boxIsSelected ? const Color(0xff9DCEFF) : Colors.transparent,
-                      receta.boxIsSelected ? const Color(0xff92A3FD) : Colors.transparent,
+                      Color(0xff9DCEFF),
+                      Color(0xff92A3FD),
                     ],
                   ),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'ver',
                     style: TextStyle(
-                      color: receta.boxIsSelected ? Colors.white : const Color(0xffC58BF2),
+                      color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
                     ),

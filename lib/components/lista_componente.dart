@@ -24,7 +24,7 @@ class ListaComponente<T> extends StatelessWidget {
           padding: const EdgeInsets.only(left: 20),
           child: Text(
             titulo,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 18,
               fontWeight: FontWeight.w700,
