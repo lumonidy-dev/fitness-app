@@ -1,24 +1,24 @@
-import 'package:fitness/pages/mealPlanner.dart';
 import 'package:flutter/material.dart';
+import 'package:fitness/pages/mealPlanner.dart';
 import 'package:fitness/pages/home.dart';
 import 'package:fitness/pages/activityTracker.dart';
 import 'package:fitness/pages/profile.dart';
-import 'package:fitness/components/bottomNavBar_componente.dart';
+import 'package:fitness/components/iconos.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: 'Poppins'),
-        home: PageViewDemo());
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: 'Poppins'),
+      home: const PageViewDemo(),
+    );
   }
 }
 
@@ -26,16 +26,16 @@ class PageViewDemo extends StatefulWidget {
   const PageViewDemo({Key? key}) : super(key: key);
 
   @override
-  State<PageViewDemo> createState() => MyHomie();
+  State<PageViewDemo> createState() => _PageViewDemoState();
 }
 
-class MyHomie extends State<PageViewDemo> {
+class _PageViewDemoState extends State<PageViewDemo> {
   final PageController _pageController = PageController();
-  int selectedPage = 0;
+  int _selectedPage = 0;
+  final double bottomNavBarHeightPercentage = 0.1;
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _pageController.dispose();
   }
@@ -43,47 +43,58 @@ class MyHomie extends State<PageViewDemo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [buildPageView(), buildBottomNav()]),
-    );
-  }
-
-  Widget buildBottomNav() {
-    return BottomNavigationBar(
-      currentIndex: selectedPage,
-      items: const [
-        BottomNavigationBarItem(label: "Page1", icon: Icon(Icons.pages)),
-        BottomNavigationBarItem(label: "Page2", icon: Icon(Icons.pages)),
-        BottomNavigationBarItem(label: "Page3", icon: Icon(Icons.pages)),
-        BottomNavigationBarItem(label: "Page4", icon: Icon(Icons.pages)),
-      ],
-      onTap: (int index) {
-        _pageController.animateToPage(index,
-            duration: const Duration(microseconds: 1000), curve: Curves.easeIn);
-      },
-    );
-  }
-
-  Widget buildPageView() {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.82,
-      child: PageView(
-        controller: _pageController,
+      body: Column(
         children: [
-          HomePage(),
-          ActivityTracker(),
-          MealPlanner(),
-          Profile(),
+          Expanded(
+            child: _buildPageView(),
+          ),
+          _buildBottomNav(),
         ],
-        onPageChanged: (index) {
-          onPageChange(index);
+      ),
+    );
+  }
+
+  Widget _buildBottomNav() {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Color(0xFF99DCEFF),
+      ),
+      child: BottomNavigationBar(
+        currentIndex: _selectedPage,
+        backgroundColor: Colors.transparent,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.black,
+        items: [
+          BottomNavigationBarItem(label: "Home", icon: AppIcons.home()),
+          BottomNavigationBarItem(label: "Tracker", icon: AppIcons.activity()),
+          BottomNavigationBarItem(label: "Planner", icon: AppIcons.planner()),
+          BottomNavigationBarItem(label: "Profile", icon: AppIcons.profile())
+        ],
+        onTap: (int index) {
+          _pageController.animateToPage(index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut);
         },
       ),
     );
   }
 
-  onPageChange(int index) {
+  Widget _buildPageView() {
+    return PageView(
+      controller: _pageController,
+      children: [
+        HomePage(),
+        ActivityTracker(),
+        MealPlanner(),
+        Profile(),
+      ],
+      onPageChanged: onPageChange,
+    );
+  }
+
+  void onPageChange(int index) {
     setState(() {
-      selectedPage = index;
+      _selectedPage = index;
     });
   }
 }
