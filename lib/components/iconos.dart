@@ -38,4 +38,13 @@ class AppIcons {
       width: 24,
     );
   }
+
+  static SvgPicture water() {
+    return SvgPicture.asset(
+      'assets/icons/water-icon.svg',
+      colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+      height: 24,
+      width: 24,
+    );
+  }
 }

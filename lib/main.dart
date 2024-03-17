@@ -4,6 +4,7 @@ import 'package:fitness/pages/home.dart';
 import 'package:fitness/pages/activityTracker.dart';
 import 'package:fitness/pages/profile.dart';
 import 'package:fitness/components/iconos.dart';
+import 'package:fitness/pages/water.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,7 +69,8 @@ class _PageViewDemoState extends State<PageViewDemo> {
           BottomNavigationBarItem(label: "Home", icon: AppIcons.home()),
           BottomNavigationBarItem(label: "Tracker", icon: AppIcons.activity()),
           BottomNavigationBarItem(label: "Planner", icon: AppIcons.planner()),
-          BottomNavigationBarItem(label: "Profile", icon: AppIcons.profile())
+          BottomNavigationBarItem(label: "Profile", icon: AppIcons.profile()),
+          BottomNavigationBarItem(label: "Water", icon: AppIcons.water())
         ],
         onTap: (int index) {
           _pageController.animateToPage(index,
@@ -87,6 +89,7 @@ class _PageViewDemoState extends State<PageViewDemo> {
         ActivityTracker(),
         MealPlanner(),
         Profile(),
+        Water(),
       ],
       onPageChanged: onPageChange,
     );
