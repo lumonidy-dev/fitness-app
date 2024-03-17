@@ -5,8 +5,11 @@ import 'package:fitness/pages/activityTracker.dart';
 import 'package:fitness/pages/profile.dart';
 import 'package:fitness/components/iconos.dart';
 import 'package:fitness/pages/water.dart';
+import 'package:fitness/services/notification.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initNotification();
   runApp(const MyApp());
 }
 
