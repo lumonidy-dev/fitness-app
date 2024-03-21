@@ -7,6 +7,10 @@ class PopularDietsModel {
   final String level;
   final String duration;
   final String calorie;
+  final String fats;
+  final String proteins;
+  final String carbohydrates;
+  final String vitamines;
   final bool boxIsSelected;
   final Color color;
 
@@ -16,6 +20,10 @@ class PopularDietsModel {
     required this.level,
     required this.duration,
     required this.calorie,
+    required this.fats,
+    required this.proteins,
+    required this.carbohydrates,
+    required this.vitamines,
     required this.boxIsSelected,
     required this.color,
   });
@@ -41,6 +49,10 @@ class PopularDietsRepository {
         level: 'Facil',
         duration: '30mins',
         calorie: '180kCal',
+        fats: '30g fats',
+        proteins: '20g proteins',
+        carbohydrates: '40g carbohydrates',
+        vitamines: 'Vitamin A, B, C, D, K',
         boxIsSelected: true,
         color: const Color(0xff9DCEFF),
       ),
@@ -50,6 +62,10 @@ class PopularDietsRepository {
         level: 'Easy',
         duration: '20mins',
         calorie: '230kCal',
+        fats: '20g fats',
+        proteins: '25g proteins',
+        carbohydrates: '35g carbohydrates',
+        vitamines: 'Vitamin A, B, C',
         boxIsSelected: false,
         color: const Color(0xffC58BF2),
       ),
