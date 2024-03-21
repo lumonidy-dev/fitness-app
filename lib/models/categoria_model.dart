@@ -57,7 +57,8 @@ class CategoriasRepository {
     // Puedes utilizar paquetes como http para realizar las solicitudes HTTP
     // y parsear la respuesta en formato JSON
     // Por ahora, simplemente retornamos una lista vacía para este ejemplo
-    await Future.delayed(Duration(seconds: 2)); // Simulación de tiempo de espera
+    await Future.delayed(
+        Duration(seconds: 2)); // Simulación de tiempo de espera
     return [];
   }
 }
