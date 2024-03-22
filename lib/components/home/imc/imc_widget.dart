@@ -9,165 +9,110 @@ class IMCWidget extends StatelessWidget {
   const IMCWidget({Key? key, required this.imcData, this.onTap})
       : super(key: key);
 
-  // Estilos generales
-  static const Color primaryColor = Color(0xFF92A3FD);
-  static const Color secondaryColor = Color(0xFF9DCEFF);
-  static const double borderRadius = 22.0;
-  static const double boxShadowBlurRadius = 22.0;
-  static const Offset boxShadowOffset = Offset(0, 10);
-  static const Color boxShadowColor = Color.fromARGB(30, 149, 174, 254);
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 16.0),
-        child: buildContainer(context),
-      ),
-    );
-  }
-
-  Widget buildContainer(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(
-          left: 16.0, right: 16.0, top: 32.0, bottom: 16.0),
-      decoration: const BoxDecoration(
-        boxShadow: [
-          BoxShadow(
-            color: Color.fromARGB(30, 149, 174, 254),
-            blurRadius: 22.0,
-            offset: Offset(0, 10),
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(22),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(30, 149, 174, 254),
+                blurRadius: 22.0,
+                offset: Offset(0, 10),
+              ),
+            ],
+            gradient: const LinearGradient(
+              colors: [Color(0xFF92A3FD), Color(0xFF9DCEFF)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(22)),
-        gradient: LinearGradient(
-          colors: [primaryColor, secondaryColor],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
+          child: Row(
+            children: [
+              _buildLeftSide(context),
+              const Spacer(),
+              _buildRightSide(),
+            ],
+          ),
         ),
       ),
-      child: Row(
-        children: [
-          leftSide(context),
-          const Spacer(),
-          rightSide(),
-        ],
-      ),
     );
   }
 
-  Widget leftSide(BuildContext context) {
-    final Color statusTextColor = getIMCStatusColor(imcData.imc);
+  Widget _buildLeftSide(BuildContext context) {
+    final Color statusTextColor = imcData.getIMCStatusColor(imcData.imc);
+    final String emoji = imcData.getEmoji(imcData.imc);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           imcData.nombre,
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8.0),
         Row(
           children: [
             Text(
               imcData.status,
-              style: TextStyle(
-                color: statusTextColor,
-                fontSize: 16.0,
-              ),
+              style: TextStyle(color: statusTextColor, fontSize: 16.0),
             ),
             const SizedBox(width: 8.0),
-            _buildEmoji(imcData.imc),
+            Text(
+              emoji,
+              style: const TextStyle(fontSize: 24.0),
+            ),
           ],
         ),
         const SizedBox(height: 8.0),
-        botonVerMas(context), // Pasa el contexto aquí
+        _buildButton(context),
       ],
     );
   }
 
-  Widget rightSide() {
+  Widget _buildRightSide() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         const Text(
           'IMC',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
+          style: TextStyle(color: Colors.white, fontSize: 16.0),
         ),
         const SizedBox(height: 8.0),
         Text(
           imcData.imc.toStringAsFixed(2),
           style: const TextStyle(
-            color: Colors.white,
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-          ),
+              color: Colors.white, fontSize: 24.0, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: 8.0),
         Text(
-          'Peso: ${imcData.peso} kg',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
-        ),
-        const SizedBox(height: 8.0),
-        Text(
-          'Altura: ${imcData.altura} m',
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
+          '${imcData.peso} ${imcData.unidadPeso} \n ${imcData.altura} ${imcData.unidadAltura}',
+          style: const TextStyle(color: Colors.white, fontSize: 16.0),
         ),
       ],
     );
   }
 
-// todo: Elegir bien los colores
-  Color getIMCStatusColor(double imc) {
-    if (imc < 18.5) {
-      return Colors.red;
-    } else if (imc >= 18.5 && imc < 24.9) {
-      return Colors.green;
-    } else if (imc >= 24.9 && imc < 29.9) {
-      return Colors.orange;
-    } else {
-      return Colors.red;
-    }
-  }
-
-  Widget botonVerMas(BuildContext context) {
-    const primary = Color(0xFFC58BF2);
-    const secondary = Color(0xFFEEA4CE);
-
-    void navigateToIMCDetailScreen(BuildContext context, IMCData imcData) {
-      Navigator.push(
+  Widget _buildButton(BuildContext context) {
+    return GestureDetector(
+      onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => IMCDetailScreen(imcData: imcData),
-        ),
-      );
-    }
-
-    return GestureDetector(
-      onTap: () {
-        // Llama a la función que navega a la pantalla de detalles
-        navigateToIMCDetailScreen(context, imcData);
-      },
+            builder: (context) => IMCDetailScreen(imcData: imcData)),
+      ),
       child: Container(
         width: 120,
         height: 45,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           gradient: const LinearGradient(
-            colors: [primary, secondary],
+            colors: [Color(0xFFC58BF2), Color(0xFFEEA4CE)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -176,33 +121,11 @@ class IMCWidget extends StatelessWidget {
           child: Text(
             'Ver más',
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.bold,
-            ),
+                color: Colors.white,
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildEmoji(double imc) {
-    String emoji;
-
-    if (imc < 18.5) {
-      emoji = '😞'; // Emoji para bajo peso
-    } else if (imc >= 18.5 && imc < 24.9) {
-      emoji = '😊'; // Emoji para peso normal
-    } else if (imc >= 24.9 && imc < 29.9) {
-      emoji = '😐'; // Emoji para sobrepeso
-    } else {
-      emoji = '😞'; // Emoji para obeso
-    }
-
-    return Text(
-      emoji,
-      style: const TextStyle(
-        fontSize: 24.0,
       ),
     );
   }
