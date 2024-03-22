@@ -15,10 +15,6 @@ class HomePage extends StatelessWidget {
         children: [
           IMCWidget(
             imcData: IMCData.getTestData(),
-            onTap: () {
-              // Lógica que se ejecutará cuando se toque el IMCWidget
-              print('IMCWidget tocado');
-            },
           )
         ],
       ),
