@@ -9,6 +9,9 @@ Para ejecutar este proyecto, necesitas tener instalado lo siguiente:
 - Flutter SDK
 - Dependencias y paquetes necesarios (puedes instalarlos ejecutando `flutter pub get`)
 
+## Figma Link
+- https://www.figma.com/file/AAlJfu2LkPGd2jPvC9scZE/Fitness-app-lumonidy?type=design&node-id=0%3A1&mode=design&t=VOXiI0nODAgC1fY2-1
+
 ## Instalación
 1. Clona este repositorio en tu máquina local usando Git:
     git clone https://github.com/SmnZin/Fitness-app.git

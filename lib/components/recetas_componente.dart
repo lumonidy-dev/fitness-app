@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../models/popular_diets_model.dart';
 import 'lista_componente.dart';
+import '../pages/detalle_receta.dart'; // Importa la pantalla de detalle de receta
 
 class RecetasComponente extends StatelessWidget {
   @override
@@ -40,7 +41,13 @@ class RecetasComponente extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                print("go to ${receta.name} page");
+                // Cuando se toca el botón "ver", muestra los detalles de la receta
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DetalleReceta(receta: receta),
+                  ),
+                );
               },
               child: Container(
                 height: 45,
