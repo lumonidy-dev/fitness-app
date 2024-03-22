@@ -27,7 +27,8 @@ class _DetalleRecetaState extends State<DetalleReceta> {
   Widget build(BuildContext context) {
     String description = widget.receta.description.length > widget.maxChars
         ? '${widget.receta.description.substring(0, widget.maxChars)}...' // Si la descripción excede el límite, muestra solo los primeros maxChars caracteres
-        : widget.receta.description; // De lo contrario, muestra toda la descripción
+        : widget
+            .receta.description; // De lo contrario, muestra toda la descripción
 
     return Scaffold(
       appBar: AppBar(),
@@ -95,28 +96,40 @@ class _DetalleRecetaState extends State<DetalleReceta> {
                     ),
                   ],
                 ),
-                SizedBox(height: 14), // Espacio entre el autor y los datos
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      _buildDataContainer(
-                          CustomIcons.calorie(), widget.receta.calorie),
-                      _buildDataContainer(CustomIcons.fats(), widget.receta.fats),
-                      _buildDataContainer(
-                          CustomIcons.proteins(), widget.receta.proteins),
-                      _buildDataContainer(
-                          CustomIcons.carbohydrates(), widget.receta.carbohydrates),
-                      _buildDataContainer(
-                          CustomIcons.vitamines(), widget.receta.vitamines),
-                    ],
-                  ),
+                SizedBox(height:15), // Espacio entre el autor y los datos
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Nutritional Information',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(height:5),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          _buildDataContainer(
+                              CustomIcons.calorie(), widget.receta.calorie),
+                          _buildDataContainer(
+                              CustomIcons.fats(), widget.receta.fats),
+                          _buildDataContainer(
+                              CustomIcons.proteins(), widget.receta.proteins),
+                          _buildDataContainer(CustomIcons.carbohydrates(),
+                              widget.receta.carbohydrates),
+                          _buildDataContainer(
+                              CustomIcons.vitamines(), widget.receta.vitamines),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -124,13 +137,13 @@ class _DetalleRecetaState extends State<DetalleReceta> {
                   'Description',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height:5), // Espacio entre el título y la descripción
+                SizedBox(height: 5), // Espacio entre el título y la descripción
                 ReadMoreText(
                   widget.receta.description,
                   trimLines: 4,
                   preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
                   style: TextStyle(color: Colors.black),
-                  colorClickableText: Color.fromARGB(255, 139, 190,231),
+                  colorClickableText: Color.fromARGB(255, 139, 190, 231),
                   trimMode: TrimMode.Line,
                   trimCollapsedText: '...Show more',
                   trimExpandedText: ' show less',
