@@ -11,6 +11,8 @@ class PopularDietsModel {
   final String proteins;
   final String carbohydrates;
   final String vitamines;
+  final String author;
+  final String description;
   final bool boxIsSelected;
   final Color color;
 
@@ -24,6 +26,8 @@ class PopularDietsModel {
     required this.proteins,
     required this.carbohydrates,
     required this.vitamines,
+    required this.author,
+    required this.description,
     required this.boxIsSelected,
     required this.color,
   });
@@ -53,6 +57,8 @@ class PopularDietsRepository {
         proteins: '20g proteins',
         carbohydrates: '40g carbohydrates',
         vitamines: 'Vitamin A, B, C, D, K',
+        author: 'John Doe',
+        description: 'Disfruta de unos deliciosos panqueques de miel, perfectamente esponjosos y dorados, endulzados con auténtica miel. Esta receta fácil de preparar te sorprenderá con su sabor dulce y suave textura. Ideal para un desayuno o brunch reconfortante y lleno de energía.',
         boxIsSelected: true,
         color: const Color(0xff9DCEFF),
       ),
@@ -66,6 +72,8 @@ class PopularDietsRepository {
         proteins: '25g proteins',
         carbohydrates: '35g carbohydrates',
         vitamines: 'Vitamin A, B, C',
+        author: 'James Ruth',
+        description: 'Sumérgete en el aroma irresistible de nuestro pan Canai, una delicia esponjosa y aromática que combina a la perfección con cualquier comida. Este pan de preparación rápida y sencilla es una excelente adición a tu mesa, con su sabor suave y su textura ligera. Perfecto para acompañar tus comidas o simplemente disfrutarlo solo con un poco de mantequilla.',
         boxIsSelected: false,
         color: const Color(0xffC58BF2),
       ),
