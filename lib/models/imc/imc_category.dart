@@ -22,3 +22,9 @@ List<IMCCategory> imcCategories = [
   IMCCategory(
       name: 'Obesidad grado III (mórbida)', min: 40, max: double.infinity),
 ];
+
+List<IMCCategory> categoriesFromChart = [
+  IMCCategory(name: 'Delgadez', min: 12, max: 18.4),
+  IMCCategory(name: 'Normal', min: 18.5, max: 24.9),
+  IMCCategory(name: 'Obesidad', min: 25, max: 39.9),
+];
