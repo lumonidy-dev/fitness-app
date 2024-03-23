@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fitness/models/imc/imc_data.dart';
-import 'package:fitness/models/imc/imc_category.dart';
+import 'package:fitness/models/imc/imc_categories.dart';
 
 class IMCTable extends StatelessWidget {
   final IMCData imcData;

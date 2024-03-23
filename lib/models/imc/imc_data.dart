@@ -113,7 +113,7 @@ class IMCData {
 
   static IMCData getTestData() {
     // Datos de prueba ficticios
-    const double imc = 32;
+    const double imc = 25;
     return IMCData(
       nombre: 'John Doe',
       imc: imc,

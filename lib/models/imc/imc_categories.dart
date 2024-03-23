@@ -1,3 +1,7 @@
+// imc_categories.dart
+
+import 'package:flutter/material.dart';
+
 class IMCCategory {
   final String name;
   final double min;
@@ -28,3 +32,48 @@ List<IMCCategory> categoriesFromChart = [
   IMCCategory(name: 'Normal', min: 18.5, max: 24.9),
   IMCCategory(name: 'Obesidad', min: 25, max: 39.9),
 ];
+
+Color getCategoryColor(IMCCategory category) {
+  switch (category.name) {
+    case 'Delgadez':
+      return Colors.blue;
+    case 'Normal':
+      return Colors.green;
+    case 'Obesidad':
+      return Colors.red;
+    default:
+      return Colors.grey;
+  }
+}
+
+Color getCategoryTextColor(String name) {
+  switch (name) {
+    case 'Delgadez':
+      return Colors.blue;
+    case 'Normal':
+      return Colors.green;
+    case 'Obesidad':
+      return Colors.red;
+    default:
+      return Colors.black;
+  }
+}
+
+String getCategoryFromIMC(double imc) {
+  for (var category in categoriesFromChart) {
+    if (imc >= category.min && imc <= category.max) {
+      return category.name;
+    }
+  }
+  return 'No definido';
+}
+
+String getEmojiFromIMC(double imc) {
+  if (imc < 18.5) {
+    return '😢';
+  } else if (imc >= 18.5 && imc <= 24.9) {
+    return '😊';
+  } else {
+    return '😡';
+  }
+}
