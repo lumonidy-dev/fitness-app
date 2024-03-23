@@ -42,8 +42,8 @@ class Water extends StatelessWidget {
   }
 }
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await initNotification();
-  runApp(Water());
-}
+// void main() async {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await initNotification();
+//   runApp(Water());
+// }
