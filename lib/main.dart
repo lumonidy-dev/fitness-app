@@ -82,13 +82,13 @@ class _PageViewDemoState extends State<PageViewDemo> {
   Widget _buildPageView() {
     return PageView(
       controller: _pageController,
+      onPageChanged: onPageChange,
       children: [
         HomePage(),
         ActivityTracker(),
         MealPlanner(),
         Profile(),
       ],
-      onPageChanged: onPageChange,
     );
   }
 
