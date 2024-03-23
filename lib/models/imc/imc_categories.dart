@@ -74,6 +74,6 @@ String getEmojiFromIMC(double imc) {
   } else if (imc >= 18.5 && imc <= 24.9) {
     return '😊';
   } else {
-    return '😡';
+    return '😱';
   }
 }

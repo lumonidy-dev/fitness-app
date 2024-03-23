@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fitness/models/imc/imc_data.dart';
-import 'package:fitness/pages/imc/details_screen.dart';
+import 'package:fitness/pages/home/imc_details.dart';
 
 class IMCWidget extends StatelessWidget {
   final IMCData imcData;

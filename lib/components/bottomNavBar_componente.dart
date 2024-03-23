@@ -2,7 +2,7 @@ import 'package:fitness/pages/mealPlanner.dart';
 import 'package:fitness/pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fitness/pages/home.dart';
+import 'package:fitness/pages/home/home.dart';
 import 'package:fitness/pages/activityTracker.dart';
 
 class MyBottomNavigationBar extends StatelessWidget {

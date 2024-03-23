@@ -276,7 +276,7 @@ class ArcPieChartPainter extends CustomPainter {
         2 * (pi / 180); // 2 grados convertidos a radianes
     double angleDegrees = angle * (180 / pi); // Convertir radianes a grados
 
-    print('Ángulo de la flecha: $angleDegrees'); // Depuración del ángulo
+    // print('Ángulo de la flecha: $angleDegrees'); // Depuración del ángulo
 
     // Tamaño y estilo de la flecha
     const double arrowLength = 16.0; // longitud de la flecha

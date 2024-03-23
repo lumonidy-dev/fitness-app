@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:fitness/models/imc/imc_data.dart';
 
-import 'widgets/details_card.dart';
-import 'widgets/calculator_form.dart';
-import 'widgets/table.dart';
-import 'widgets/semicircle.dart';
+import 'imc/widgets/details_card.dart';
+import 'imc/widgets/calculator_form.dart';
+import 'imc/widgets/table.dart';
+import 'imc/widgets/semicircle.dart';
+import 'package:fitness/utils/anuncio.dart';
+import 'package:fitness/utils/mockup_manager.dart';
 
 class IMCDetailScreen extends StatefulWidget {
   final IMCData imcData;
@@ -38,10 +40,26 @@ class _IMCDetailScreenState extends State<IMCDetailScreen> {
               const SizedBox(height: 25),
               _buildApps(),
               IMCTable(imcData: widget.imcData),
+              const SizedBox(height: 25),
+              _buildAnuncio(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildAnuncio() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 16.0),
+        ),
+        Anuncio(
+          htmlData: MockupManager.getNextMockup(),
+        ),
+      ],
     );
   }
 
@@ -55,7 +73,7 @@ class _IMCDetailScreenState extends State<IMCDetailScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CalculatorForm(imcData: widget.imcData, buttonSize: 60),
-              SizedBox(height: 16), // Espacio entre los botones
+              const SizedBox(height: 16), // Espacio entre los botones
               _infoButton(size: 60),
             ],
           ),

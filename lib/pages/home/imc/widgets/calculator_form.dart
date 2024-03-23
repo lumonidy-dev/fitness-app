@@ -95,7 +95,6 @@ class CalculatorFormState extends State<CalculatorForm> {
                   ElevatedButton(
                     onPressed: () {
                       _calcularIMC();
-                      Navigator.of(context).pop();
                     },
                     child: const Text('Calcular IMC'),
                   ),
@@ -117,6 +116,8 @@ class CalculatorFormState extends State<CalculatorForm> {
 
     double imc = IMCCalculator.calcularIMC(widget.imcData);
     String imcStatus = IMCData.getIMCStatus(imc);
+    Color imcColor = widget.imcData.getIMCStatusColor(imc);
+    String emoji = widget.imcData.getEmoji(imc);
 
     showDialog(
       context: context,
@@ -126,9 +127,16 @@ class CalculatorFormState extends State<CalculatorForm> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('IMC calculado: ${imc.toStringAsFixed(2)}'),
+              Text('IMC calculado: ${imc.toStringAsFixed(2)}',
+                  style: TextStyle(color: imcColor)),
               const SizedBox(height: 8),
-              Text('Estado: $imcStatus'),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Estado: ', style: TextStyle(color: Colors.black)),
+                  Text('$emoji $imcStatus', style: TextStyle(color: imcColor)),
+                ],
+              ),
             ],
           ),
           actions: <Widget>[

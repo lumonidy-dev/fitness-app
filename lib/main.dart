@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fitness/pages/mealPlanner.dart';
-import 'package:fitness/pages/home.dart';
+import 'package:fitness/pages/home/home.dart';
 import 'package:fitness/pages/activityTracker.dart';
 import 'package:fitness/pages/profile.dart';
 import 'package:fitness/components/iconos.dart';
