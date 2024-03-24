@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:fitness/components/bottomNavBar_componente.dart';
+import 'package:fitness/components/WidgetCalorias/widgetCalorias.dart';
 
 class HomePage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
-        ),
-        body: Center(
-          child: Text(
-            'Home',
-            style: TextStyle(
-              fontSize: 24.0,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-);
+      appBar: AppBar(
+        title: const Center(
+            child: Text(
+          'Home',
+        )),
+      ),
+      body: const Center( 
+          child: WidgetCalorias(caloriasConsumidas: 660, caloriasMeta: 900,)),
+    );
   }
 }
+

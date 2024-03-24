@@ -45,7 +45,7 @@ class ListaActividades extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      padding: EdgeInsets.all(0),
+      padding: const EdgeInsets.all(0),
       itemCount: filteredActividades.length,
       itemBuilder: (BuildContext context, int index) {
         return ListTile(
