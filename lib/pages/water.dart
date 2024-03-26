@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fitness/services/notification.dart';
 import 'package:fitness/components/water/semicirculoProgress.dart';
 import 'package:fitness/components/water/iconBar.dart';
+import 'package:fitness/components/water/registroAgua.dart';
 
 class Water extends StatelessWidget {
   @override
@@ -24,7 +25,7 @@ class Water extends StatelessWidget {
                 // Contenedor de los iconos
                 Positioned(
                   bottom:
-                      250, // Ajusta la posición vertical según sea necesario
+                      100, // Ajusta la posición vertical según sea necesario de iconos
                   child: IconBar(
                     startIcon: SvgPicture.asset(
                       'assets/icons/startIcon.svg',
@@ -70,17 +71,19 @@ class Water extends StatelessWidget {
                     ),
                   ),
                 ),
-                Positioned(bottom: 380, child: Porcentaje()),
+                Positioned(bottom: 250, child: Porcentaje()),
               ],
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 175, 212, 229),
           onPressed: () {
             mostrarNotification();
           },
           child: Icon(Icons.notifications),
         ),
+        bottomNavigationBar: RegistroAgua(),
       ),
     );
   }
