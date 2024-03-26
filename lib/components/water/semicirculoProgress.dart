@@ -1,12 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HalfCircleProgressBar extends StatelessWidget {
   final Color backgroundColor;
   final Color valueColor;
   final double value;
   final double strokeWidth;
-  final Widget child;
+  final Widget child; // Icono principal (bebeAgua)
 
   const HalfCircleProgressBar({
     Key? key,
@@ -30,7 +31,7 @@ class HalfCircleProgressBar extends StatelessWidget {
               value: value,
               strokeWidth: strokeWidth,
             ),
-            size: Size(400, 100),
+            size: Size(350, 100), // Tamaño finito para el CustomPaint
           ),
           Positioned(
             child: child,
